@@ -4,7 +4,9 @@ const App = () => {
   return (
     <>
       <Header />
-      <main className="main">Main</main>
+      <main className="main bg-gray-200">
+        <div className="container mx-auto">Main</div>
+      </main>
       <Footer />
     </>
   );

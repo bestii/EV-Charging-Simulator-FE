@@ -1,7 +1,7 @@
 const Header = () => {
   return (
-    <header className="sticky top-0 bg-white px-6 py-4 shadow-md">
-      <div className="flex items-center">
+    <header className="sticky top-0 px-4 py-4">
+      <div className="container mx-auto">
         <span className="text-xl font-bold text-gray-800">
           EV Charging Simulator
         </span>
