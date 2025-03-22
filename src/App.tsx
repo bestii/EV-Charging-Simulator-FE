@@ -1,9 +1,11 @@
+import { Footer, Header } from './components';
+
 const App = () => {
   return (
     <>
-      <header>Header</header>
-      <main>Main</main>
-      <footer>Footer</footer>
+      <Header />
+      <main className="main">Main</main>
+      <Footer />
     </>
   );
 };

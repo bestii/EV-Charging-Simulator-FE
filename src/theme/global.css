@@ -1,1 +1,11 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+#root {
+  @apply flex;
+  @apply flex-col;
+  @apply min-h-screen;
+}
+
+.main {
+  @apply flex-grow;
+}
