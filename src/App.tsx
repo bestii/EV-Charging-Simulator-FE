@@ -1,5 +1,11 @@
 const App = () => {
-  return <div>App</div>;
+  return (
+    <>
+      <header>Header</header>
+      <main>Main</main>
+      <footer>Footer</footer>
+    </>
+  );
 };
 
 export default App;
