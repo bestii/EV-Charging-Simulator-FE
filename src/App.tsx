@@ -29,7 +29,7 @@ const App = () => {
             visualize the impact effortlessly. 🚗⚡📊
           </p>
         </div>
-        <div className="grid flex-1 grid-cols-1 gap-4 md:grid-cols-12">
+        <div className="grid auto-rows-auto grid-cols-1 items-start gap-4 md:grid-cols-12">
           <ConfigForm onSimulate={handleSimulation} />
           <SimulationDashboard
             simulation={simulations}

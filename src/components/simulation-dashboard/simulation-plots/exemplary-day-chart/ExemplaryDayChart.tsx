@@ -6,12 +6,18 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
-import { simulationData } from '../../../../data';
+import { SimulationData } from '../../../../types';
 
-export const ExemplaryDayChart = () => {
+type ExemplaryDayChartProps = {
+  exemplaryDayData: SimulationData['exemplaryDayData'];
+};
+
+export const ExemplaryDayChart = ({
+  exemplaryDayData
+}: ExemplaryDayChartProps) => {
   return (
     <ResponsiveContainer width="100%" height={300}>
-      <LineChart data={simulationData.exemplaryDayData}>
+      <LineChart data={exemplaryDayData}>
         <XAxis dataKey="hour" />
         <YAxis
           label={{

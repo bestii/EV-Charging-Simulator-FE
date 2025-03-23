@@ -6,12 +6,18 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
-import { simulationData } from '../../../../data';
+import { SimulationData } from '../../../../types';
 
-export const ChargingValuesChart = () => {
+type ChargingValuesChartProps = {
+  chargePointData: SimulationData['chargePointData'];
+};
+
+export const ChargingValuesChart = ({
+  chargePointData
+}: ChargingValuesChartProps) => {
   return (
     <ResponsiveContainer width="100%" height={300}>
-      <BarChart data={simulationData.chargePointData}>
+      <BarChart data={chargePointData}>
         <XAxis
           dataKey="chargePoint"
           label={{

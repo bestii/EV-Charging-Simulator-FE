@@ -7,12 +7,18 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
-import { simulationData } from '../../../../data';
+import { SimulationData } from '../../../../types';
 
-export const AggregatedDataChart = () => {
+type AggregatedDataChartProps = {
+  aggregatedChartData: SimulationData['aggregatedChartData'];
+};
+
+export const AggregatedDataChart = ({
+  aggregatedChartData
+}: AggregatedDataChartProps) => {
   return (
     <ResponsiveContainer width="100%" height={300}>
-      <BarChart data={simulationData.aggregatedChartData}>
+      <BarChart data={aggregatedChartData}>
         <XAxis dataKey="timeUnit" />
         <YAxis
           label={{ value: 'Values', angle: -90, position: 'insideLeft' }}

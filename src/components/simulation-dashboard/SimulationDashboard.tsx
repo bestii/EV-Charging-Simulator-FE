@@ -13,14 +13,16 @@ const SimulationDashboard = ({
   simulation
 }: SimulationDashboardProps) => {
   return (
-    <Card additionalClass="md:col-span-8">
+    <Card additionalClass="md:col-span-8 min-h-120">
       {isSimulationLoading && <Loader />}
       {!simulation && !isSimulationLoading && (
         <span>
           Please run simulation using your configuration to get the simulation
         </span>
       )}
-      {!isSimulationLoading && simulation && <SimuationPlots />}
+      {!isSimulationLoading && simulation && (
+        <SimuationPlots data={simulation} />
+      )}
     </Card>
   );
 };
