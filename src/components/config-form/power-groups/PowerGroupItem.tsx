@@ -15,7 +15,7 @@ export const PowerGroupItem = ({ id, remove }: PowerGroupItemProps) => {
   };
 
   return (
-    <div className="mb-3 flex flex-wrap items-end gap-x-3">
+    <div className="mb-3 flex flex-wrap items-end gap-x-1">
       <div className="flex w-20 flex-col">
         <label
           htmlFor={`chargingPowerGroups.${id}.power`}

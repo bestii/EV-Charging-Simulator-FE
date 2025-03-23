@@ -46,7 +46,7 @@ const ConfigForm = ({ onSimulate }: ConfigFormProps) => {
   };
 
   return (
-    <Card additionalClass="md:col-span-4">
+    <Card additionalClass="lg:col-span-4 md:col-span-5">
       <FormProvider {...methods}>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-1">
           <div>
