@@ -15,8 +15,8 @@ export const PowerGroupItem = ({ id, remove }: PowerGroupItemProps) => {
   };
 
   return (
-    <div className="mb-3 flex items-end gap-x-3">
-      <div className="flex flex-col">
+    <div className="mb-3 flex flex-wrap items-end gap-x-3">
+      <div className="flex w-25 flex-col">
         <label
           htmlFor={`chargingPowerGroups.${id}.power`}
           className="label-text"
@@ -29,15 +29,13 @@ export const PowerGroupItem = ({ id, remove }: PowerGroupItemProps) => {
           {...register(`chargingPowerGroups.${id}.power`, {
             valueAsNumber: true
           })}
-          className="input-field w-25 text-center"
+          className="input-field text-center"
         />
       </div>
-
       <div className="flex items-center">
         <XMarkIcon className="mx-2 text-gray-400" height="24" />
       </div>
-
-      <div className="flex flex-col">
+      <div className="flex w-25 flex-col">
         <label
           htmlFor={`chargingPowerGroups.${id}.count`}
           className="label-text"
@@ -50,10 +48,9 @@ export const PowerGroupItem = ({ id, remove }: PowerGroupItemProps) => {
           {...register(`chargingPowerGroups.${id}.count`, {
             valueAsNumber: true
           })}
-          className="input-field w-25 text-center"
+          className="input-field text-center"
         />
       </div>
-
       {id > 1 && (
         <button
           onClick={removeGroup}

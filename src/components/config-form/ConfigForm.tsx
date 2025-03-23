@@ -27,6 +27,8 @@ const ConfigForm = () => {
     watch
   } = methods;
 
+  console.log(errors);
+
   const isPowerDifferent = watch('isPowerDifferent');
 
   const onSubmit = (data: ConfigValues) => {
@@ -104,16 +106,7 @@ const ConfigForm = () => {
               <ErrorMsg name="defaultPower" />
             </div>
           )}
-          {isPowerDifferent && (
-            <div>
-              <PowerGroupList />
-              {errors.chargingPowerGroups && (
-                <p className="text-sm text-red-500">
-                  {errors.chargingPowerGroups.message}
-                </p>
-              )}
-            </div>
-          )}
+          {isPowerDifferent && <PowerGroupList />}
           <button
             type="submit"
             className="mt-6 w-full rounded-md bg-blue-600 p-3 text-white hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:outline-none"

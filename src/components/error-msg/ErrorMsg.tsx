@@ -9,9 +9,12 @@ export const ErrorMsg = ({ name }: ErrorMsgProps) => {
     formState: { errors }
   } = useFormContext();
   const error = get(errors, name);
+
+  const message = (error?.message || error?.root?.message) ?? '';
+
   return (
     <div className="min-h-6">
-      {error && <span className="text-xs text-red-500">{error.message}</span>}
+      {message && <span className="text-xs text-red-500">{message}</span>}
     </div>
   );
 };

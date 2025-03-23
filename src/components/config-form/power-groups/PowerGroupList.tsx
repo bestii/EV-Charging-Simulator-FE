@@ -1,5 +1,6 @@
 import { PlusCircleIcon } from '@heroicons/react/24/outline';
 import { useFieldArray } from 'react-hook-form';
+import { ErrorMsg } from '../../error-msg/ErrorMsg';
 import { PowerGroupItem } from './PowerGroupItem';
 
 const PowerGroupList = () => {
@@ -34,6 +35,7 @@ const PowerGroupList = () => {
       {fields.map((field, index) => (
         <PowerGroupItem key={field.id} id={index} remove={remove} />
       ))}
+      <ErrorMsg name="chargingPowerGroups" />
     </div>
   );
 };
