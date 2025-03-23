@@ -3,7 +3,7 @@ import { useFieldArray } from 'react-hook-form';
 import { ErrorMsg } from '../../error-msg/ErrorMsg';
 import { PowerGroupItem } from './PowerGroupItem';
 
-const PowerGroupList = () => {
+export const PowerGroupList = () => {
   const { fields, append, remove } = useFieldArray({
     name: 'chargingPowerGroups'
   });
@@ -39,5 +39,3 @@ const PowerGroupList = () => {
     </div>
   );
 };
-
-export default PowerGroupList;

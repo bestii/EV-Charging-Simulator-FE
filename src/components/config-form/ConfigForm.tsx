@@ -1,13 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { z } from 'zod';
 import { configSchema } from '../../schema/configSchema';
-import Card from '../card/Card';
+import { ConfigValues } from '../../types';
+import { Card } from '../card/Card';
 import { ErrorMsg } from '../error-msg/ErrorMsg';
-import PowerGroupList from './power-groups/PowerGroupList';
-
-type ConfigValues = z.infer<typeof configSchema>;
+import { PowerGroupList } from './power-groups/PowerGroupList';
 
 const defaultValues: ConfigValues = {
   chargePoints: 1,
