@@ -1,12 +1,12 @@
 const Footer = () => {
   return (
     <footer className="container mx-auto text-sm font-semibold">
-      <div className="flex justify-between border-t border-gray-950/5 py-6">
-        <span>© {new Date().getFullYear()} EV Charging Simulator.</span>
-        <span>
-          <span className="me-1 text-gray-500">
-            {'Created / Code / Design by'}
-          </span>
+      <div className="flex flex-col items-center gap-2 border-t border-gray-950/5 px-4 py-6 sm:flex-row sm:justify-between">
+        <span className="text-center">
+          © {new Date().getFullYear()} EV Charging Simulator.
+        </span>
+        <span className="text-center">
+          <span className="me-1 text-gray-500">Created / Code / Design by</span>
           <a
             href="https://github.com/bestii"
             className="underline"
