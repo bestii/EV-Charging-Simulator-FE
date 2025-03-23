@@ -20,14 +20,7 @@ const ConfigForm = () => {
     }
   });
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    watch
-  } = methods;
-
-  console.log(errors);
+  const { register, handleSubmit, watch } = methods;
 
   const isPowerDifferent = watch('isPowerDifferent');
 
