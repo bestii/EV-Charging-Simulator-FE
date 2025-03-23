@@ -21,9 +21,10 @@ const defaultValues: ConfigValues = {
 
 type ConfigFormProps = {
   onSimulate: (data: ConfigValues) => void;
+  onReset: () => void;
 };
 
-const ConfigForm = ({ onSimulate }: ConfigFormProps) => {
+const ConfigForm = ({ onSimulate, onReset }: ConfigFormProps) => {
   const methods = useForm<ConfigValues>({
     resolver: zodResolver(configSchema),
     defaultValues,
@@ -128,6 +129,7 @@ const ConfigForm = ({ onSimulate }: ConfigFormProps) => {
               className="btn btn-secondary w-[45%]"
               onClick={() => {
                 reset(defaultValues);
+                onReset();
               }}
             >
               Reset

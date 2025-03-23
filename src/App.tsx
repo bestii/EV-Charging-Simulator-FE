@@ -15,6 +15,10 @@ const App = () => {
       }
     });
   };
+  const handleReset = () => {
+    setSimulations(null);
+  };
+
   return (
     <>
       <Header />
@@ -30,7 +34,7 @@ const App = () => {
           </p>
         </div>
         <div className="grid auto-rows-auto grid-cols-1 items-start gap-4 md:grid-cols-12">
-          <ConfigForm onSimulate={handleSimulation} />
+          <ConfigForm onSimulate={handleSimulation} onReset={handleReset} />
           <SimulationDashboard
             simulation={simulations}
             isSimulationLoading={isPending}
