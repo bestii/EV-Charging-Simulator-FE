@@ -1,6 +1,6 @@
 import ConfigForm from './config-form/ConfigForm';
 import Footer from './footer/Footer';
 import Header from './header/Header';
-import SimuationPlots from './simulation-plots/SimuationPlots';
+import SimulationDashboard from './simulation-dashboard/SimulationDashboard';
 
-export { ConfigForm, Footer, Header, SimuationPlots };
+export { ConfigForm, Footer, Header, SimulationDashboard };

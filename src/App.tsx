@@ -1,12 +1,22 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ConfigForm, Footer, Header, SimuationPlots } from './components';
-
-// Create a client
-const queryClient = new QueryClient();
+import { useState } from 'react';
+import { ConfigForm, Footer, Header, SimulationDashboard } from './components';
+import { useGetSimulation } from './hooks/useGetSimulation/useGetSimulation';
+import { ConfigValues, SimulationData } from './types';
 
 const App = () => {
+  const { mutate, isPending } = useGetSimulation();
+  const [simulations, setSimulations] = useState<SimulationData | null>(null);
+
+  const handleSimulation = async (data: ConfigValues) => {
+    mutate(data, {
+      onSuccess: (simulatedData) => {
+        console.log(simulatedData);
+        setSimulations(simulatedData);
+      }
+    });
+  };
   return (
-    <QueryClientProvider client={queryClient}>
+    <>
       <Header />
       <main className="main container mx-auto p-4">
         <div className="my-6 text-center">
@@ -20,12 +30,15 @@ const App = () => {
           </p>
         </div>
         <div className="grid flex-1 grid-cols-1 gap-4 md:grid-cols-12">
-          <ConfigForm />
-          <SimuationPlots />
+          <ConfigForm onSimulate={handleSimulation} />
+          <SimulationDashboard
+            simulation={simulations}
+            isSimulationLoading={isPending}
+          />
         </div>
       </main>
       <Footer />
-    </QueryClientProvider>
+    </>
   );
 };
 

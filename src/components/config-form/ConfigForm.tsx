@@ -19,7 +19,11 @@ const defaultValues: ConfigValues = {
   ]
 };
 
-const ConfigForm = () => {
+type ConfigFormProps = {
+  onSimulate: (data: ConfigValues) => void;
+};
+
+const ConfigForm = ({ onSimulate }: ConfigFormProps) => {
   const methods = useForm<ConfigValues>({
     resolver: zodResolver(configSchema),
     defaultValues,
@@ -38,7 +42,7 @@ const ConfigForm = () => {
   }, [chargePoints, setValue]);
 
   const onSubmit = (data: ConfigValues) => {
-    console.log(data);
+    onSimulate(data);
   };
 
   return (
