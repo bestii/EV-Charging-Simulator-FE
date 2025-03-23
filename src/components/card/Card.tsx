@@ -6,7 +6,9 @@ type CardType = {
 
 const Card = ({ additionalClass, children }: CardType) => {
   return (
-    <div className={`rounded-lg bg-white p-4 shadow ${additionalClass ?? ''}`}>
+    <div
+      className={`border-1 border-gray-950/5 bg-white p-4 ${additionalClass ?? ''}`}
+    >
       {children}
     </div>
   );

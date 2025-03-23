@@ -19,7 +19,7 @@ export const configSchema = z
       .refine((val) => val !== 0, {
         message: 'Default power should not be 0'
       }),
-    chargingPower: z
+    chargingPowerGroups: z
       .array(
         z.object({
           power: z
@@ -33,9 +33,9 @@ export const configSchema = z
   .refine(
     (data) => {
       // Only validate chargingPower when isPowerDifferent is true
-      if (!data.isPowerDifferent || !data.chargingPower) return true;
+      if (!data.isPowerDifferent || !data.chargingPowerGroups) return true;
 
-      const totalCount = data.chargingPower.reduce(
+      const totalCount = data.chargingPowerGroups.reduce(
         (sum, item) => sum + item.count,
         0
       );
@@ -44,7 +44,7 @@ export const configSchema = z
     {
       message:
         'The total count of charging stations should equal the total charge points',
-      path: ['chargingPower']
+      path: ['chargingPowerGroups']
       // Attach error to chargingPower field
     }
   );

@@ -1,7 +1,9 @@
 const Footer = () => {
   return (
-    <footer className="border-t-1 border-t-gray-200 py-6 text-center text-sm font-semibold">
-      © {new Date().getFullYear()} EV Charging Simulator.
+    <footer className="container mx-auto text-center text-sm font-semibold">
+      <div className="border-t border-gray-950/5 py-6">
+        © {new Date().getFullYear()} EV Charging Simulator.
+      </div>
     </footer>
   );
 };

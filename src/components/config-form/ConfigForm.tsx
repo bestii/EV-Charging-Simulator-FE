@@ -1,9 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Controller, FormProvider, useForm } from 'react-hook-form';
+import { FormProvider, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { configSchema } from '../../schema/configSchema';
 import Card from '../card/Card';
 import { ErrorMsg } from '../error-msg/ErrorMsg';
+import PowerGroupList from './power-groups/PowerGroupList';
 
 type ConfigValues = z.infer<typeof configSchema>;
 
@@ -20,7 +21,6 @@ const ConfigForm = () => {
   });
 
   const {
-    control,
     register,
     handleSubmit,
     formState: { errors },
@@ -51,13 +51,16 @@ const ConfigForm = () => {
           </div>
           <div>
             <label htmlFor="arrivalMultiplier" className="label-text">
-              Arrival Multiplier (%)
+              Arrival Multiplier: <span>{watch('arrivalMultiplier')}%</span>
             </label>
             <input
               id="arrivalMultiplier"
-              type="number"
+              type="range"
+              min="0"
+              max="200"
+              step="1"
               {...register('arrivalMultiplier', { valueAsNumber: true })}
-              className="input-field"
+              className="w-full cursor-pointer"
             />
             <ErrorMsg name="arrivalMultiplier" />
           </div>
@@ -87,8 +90,6 @@ const ConfigForm = () => {
               className="ml-2 cursor-pointer"
             />
           </div>
-
-          {/* Default Power */}
           {!isPowerDifferent && (
             <div>
               <label htmlFor="defaultPower" className="label-text">
@@ -103,71 +104,17 @@ const ConfigForm = () => {
               <ErrorMsg name="defaultPower" />
             </div>
           )}
-
-          {/* Dynamic Charging Power */}
           {isPowerDifferent && (
             <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Charging Power
-              </label>
-              <Controller
-                name="chargingPower"
-                control={control}
-                render={({ field }) => (
-                  <>
-                    {field.value?.map((item, index) => (
-                      <div key={index} className="flex space-x-2">
-                        <input
-                          type="number"
-                          value={item.power}
-                          onChange={(e) => {
-                            const newChargingPower = [...field.value!];
-                            newChargingPower[index].power = parseFloat(
-                              e.target.value
-                            );
-                            field.onChange(newChargingPower);
-                          }}
-                          className="w-24 rounded-md border p-2"
-                          placeholder="Power (kW)"
-                        />
-                        <input
-                          type="number"
-                          value={item.count}
-                          onChange={(e) => {
-                            const newChargingPower = [...field.value!];
-                            newChargingPower[index].count = parseInt(
-                              e.target.value
-                            );
-                            field.onChange(newChargingPower);
-                          }}
-                          className="w-24 rounded-md border p-2"
-                          placeholder="Count"
-                        />
-                      </div>
-                    ))}
-                    <button
-                      type="button"
-                      onClick={() =>
-                        field.onChange([
-                          ...field.value!,
-                          { power: 11, count: 1 }
-                        ])
-                      }
-                      className="mt-2 text-blue-500"
-                    >
-                      Add Power
-                    </button>
-                  </>
-                )}
-              />
-              {errors.chargingPower && (
+              <p className="label-text">Charging Power Groups:</p>
+              <PowerGroupList />
+              {errors.chargingPowerGroups && (
                 <p className="text-sm text-red-500">
-                  {errors.chargingPower.message}
+                  {errors.chargingPowerGroups.message}
                 </p>
               )}
             </div>
           )}
-
           <button
             type="submit"
             className="mt-6 w-full rounded-md bg-blue-600 p-3 text-white hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:outline-none"
