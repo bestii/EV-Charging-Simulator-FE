@@ -33,18 +33,6 @@ const ConfigForm = () => {
       <FormProvider {...methods}>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-1">
           <div>
-            <label htmlFor="chargePoints" className="label-text">
-              Charge Points
-            </label>
-            <input
-              id="chargePoints"
-              type="number"
-              {...register('chargePoints', { valueAsNumber: true })}
-              className="input-field w-full"
-            />
-            <ErrorMsg name="chargePoints" />
-          </div>
-          <div>
             <label htmlFor="arrivalMultiplier" className="label-text">
               Arrival Multiplier: <span>{watch('arrivalMultiplier')}%</span>
             </label>
@@ -70,6 +58,18 @@ const ConfigForm = () => {
               className="input-field w-full"
             />
             <ErrorMsg name="carConsumption" />
+          </div>
+          <div>
+            <label htmlFor="chargePoints" className="label-text">
+              Charge Points
+            </label>
+            <input
+              id="chargePoints"
+              type="number"
+              {...register('chargePoints', { valueAsNumber: true })}
+              className="input-field w-full"
+            />
+            <ErrorMsg name="chargePoints" />
           </div>
           <div className="mb-6 flex">
             <label
