@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { configSchema } from '../../schema/configSchema';
@@ -16,13 +17,25 @@ const ConfigForm = () => {
       arrivalMultiplier: 100,
       carConsumption: 18,
       isPowerDifferent: false,
-      defaultPower: 11
-    }
+      defaultPower: 11,
+      chargingPowerGroups: [
+        { power: 11, count: 1 },
+        { power: 11, count: 1 }
+      ]
+    },
+    mode: 'onChange'
   });
 
-  const { register, handleSubmit, watch } = methods;
+  const { register, handleSubmit, watch, setValue } = methods;
 
+  const chargePoints = watch('chargePoints');
   const isPowerDifferent = watch('isPowerDifferent');
+
+  useEffect(() => {
+    if (chargePoints <= 2) {
+      setValue('isPowerDifferent', false);
+    }
+  }, [chargePoints, setValue]);
 
   const onSubmit = (data: ConfigValues) => {
     console.log(data);
@@ -83,6 +96,7 @@ const ConfigForm = () => {
               type="checkbox"
               {...register('isPowerDifferent')}
               className="ml-2 cursor-pointer"
+              disabled={chargePoints < 2}
             />
           </div>
           {!isPowerDifferent && (

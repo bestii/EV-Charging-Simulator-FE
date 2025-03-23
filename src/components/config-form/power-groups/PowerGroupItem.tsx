@@ -16,7 +16,7 @@ export const PowerGroupItem = ({ id, remove }: PowerGroupItemProps) => {
 
   return (
     <div className="mb-3 flex flex-wrap items-end gap-x-3">
-      <div className="flex w-25 flex-col">
+      <div className="flex w-20 flex-col">
         <label
           htmlFor={`chargingPowerGroups.${id}.power`}
           className="label-text"
@@ -33,9 +33,9 @@ export const PowerGroupItem = ({ id, remove }: PowerGroupItemProps) => {
         />
       </div>
       <div className="flex items-center">
-        <XMarkIcon className="mx-2 text-gray-400" height="24" />
+        <XMarkIcon className="text-gray-400" height="24" />
       </div>
-      <div className="flex w-25 flex-col">
+      <div className="flex w-20 flex-col">
         <label
           htmlFor={`chargingPowerGroups.${id}.count`}
           className="label-text"
