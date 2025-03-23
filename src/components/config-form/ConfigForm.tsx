@@ -9,24 +9,26 @@ import PowerGroupList from './power-groups/PowerGroupList';
 
 type ConfigValues = z.infer<typeof configSchema>;
 
+const defaultValues: ConfigValues = {
+  chargePoints: 1,
+  arrivalMultiplier: 100,
+  carConsumption: 18,
+  isPowerDifferent: false,
+  defaultPower: 11,
+  chargingPowerGroups: [
+    { power: 11, count: 1 },
+    { power: 11, count: 1 }
+  ]
+};
+
 const ConfigForm = () => {
   const methods = useForm<ConfigValues>({
     resolver: zodResolver(configSchema),
-    defaultValues: {
-      chargePoints: 1,
-      arrivalMultiplier: 100,
-      carConsumption: 18,
-      isPowerDifferent: false,
-      defaultPower: 11,
-      chargingPowerGroups: [
-        { power: 11, count: 1 },
-        { power: 11, count: 1 }
-      ]
-    },
+    defaultValues,
     mode: 'onChange'
   });
 
-  const { register, handleSubmit, watch, setValue } = methods;
+  const { register, handleSubmit, watch, setValue, reset } = methods;
 
   const chargePoints = watch('chargePoints');
   const isPowerDifferent = watch('isPowerDifferent');
@@ -68,7 +70,7 @@ const ConfigForm = () => {
               id="carConsumption"
               type="number"
               {...register('carConsumption', { valueAsNumber: true })}
-              className="input-field w-full"
+              className="input-field"
             />
             <ErrorMsg name="carConsumption" />
           </div>
@@ -80,14 +82,18 @@ const ConfigForm = () => {
               id="chargePoints"
               type="number"
               {...register('chargePoints', { valueAsNumber: true })}
-              className="input-field w-full"
+              className="input-field"
             />
             <ErrorMsg name="chargePoints" />
           </div>
           <div className="mb-6 flex">
             <label
               htmlFor="isPowerDifferent"
-              className="label-text inline-flex cursor-pointer items-center"
+              className={`label-text inline-flex items-center ${
+                chargePoints < 2
+                  ? 'cursor-not-allowed !text-gray-400'
+                  : 'cursor-pointer'
+              }`}
             >
               Do you have charging points with different power?
             </label>
@@ -95,7 +101,7 @@ const ConfigForm = () => {
               id="isPowerDifferent"
               type="checkbox"
               {...register('isPowerDifferent')}
-              className="ml-2 cursor-pointer"
+              className="ml-2 cursor-pointer disabled:cursor-not-allowed"
               disabled={chargePoints < 2}
             />
           </div>
@@ -108,18 +114,26 @@ const ConfigForm = () => {
                 id="defaultPower"
                 type="number"
                 {...register('defaultPower', { valueAsNumber: true })}
-                className="input-field w-full"
+                className="input-field"
               />
               <ErrorMsg name="defaultPower" />
             </div>
           )}
           {isPowerDifferent && <PowerGroupList />}
-          <button
-            type="submit"
-            className="mt-6 w-full rounded-md bg-blue-600 p-3 text-white hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-          >
-            Submit
-          </button>
+          <div className="mt-4 flex justify-between">
+            <button
+              type="button"
+              className="btn btn-secondary w-[45%]"
+              onClick={() => {
+                reset(defaultValues);
+              }}
+            >
+              Reset
+            </button>
+            <button type="submit" className="btn btn-primary w-[45%]">
+              Simulate
+            </button>
+          </div>
         </form>
       </FormProvider>
     </Card>
