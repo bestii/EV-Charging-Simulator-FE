@@ -45,7 +45,7 @@ const ConfigForm = () => {
               id="chargePoints"
               type="number"
               {...register('chargePoints', { valueAsNumber: true })}
-              className="input-field"
+              className="input-field w-full"
             />
             <ErrorMsg name="chargePoints" />
           </div>
@@ -72,7 +72,7 @@ const ConfigForm = () => {
               id="carConsumption"
               type="number"
               {...register('carConsumption', { valueAsNumber: true })}
-              className="input-field"
+              className="input-field w-full"
             />
             <ErrorMsg name="carConsumption" />
           </div>
@@ -99,14 +99,13 @@ const ConfigForm = () => {
                 id="defaultPower"
                 type="number"
                 {...register('defaultPower', { valueAsNumber: true })}
-                className="input-field"
+                className="input-field w-full"
               />
               <ErrorMsg name="defaultPower" />
             </div>
           )}
           {isPowerDifferent && (
             <div>
-              <p className="label-text">Charging Power Groups:</p>
               <PowerGroupList />
               {errors.chargingPowerGroups && (
                 <p className="text-sm text-red-500">

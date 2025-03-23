@@ -1,4 +1,5 @@
-import { XCircleIcon } from '@heroicons/react/16/solid';
+import { XMarkIcon } from '@heroicons/react/16/solid';
+import { TrashIcon } from '@heroicons/react/24/outline';
 import { UseFieldArrayRemove, useFormContext } from 'react-hook-form';
 
 type PowerGroupItemProps = {
@@ -6,50 +7,65 @@ type PowerGroupItemProps = {
   remove: UseFieldArrayRemove;
 };
 
-const PowerGroupItem = ({ id, remove }: PowerGroupItemProps) => {
+export const PowerGroupItem = ({ id, remove }: PowerGroupItemProps) => {
   const { register } = useFormContext();
 
   const removeGroup = () => {
     remove(id);
   };
+
   return (
-    <div className="flex">
-      <div className="mr-4 flex-1">
+    <div className="mb-3 flex items-end gap-x-3">
+      <div className="flex flex-col">
         <label
-          className="label-text"
           htmlFor={`chargingPowerGroups.${id}.power`}
+          className="label-text"
         >
-          {`Power Group ${id + 1}`}
+          Power (kW)
         </label>
-        <div className="flex items-center">
-          <input
-            id={`chargingPowerGroups.${id}.power`}
-            type="number"
-            {...register(`chargingPowerGroups.${id}.power`, {
-              valueAsNumber: true
-            })}
-            className="input-field"
-          />
-          <span>x</span>
-          <input
-            id={`chargingPowerGroups.${id}.count`}
-            type="number"
-            {...register(`chargingPowerGroups.${id}.count`, {
-              valueAsNumber: true
-            })}
-            className="input-field"
-          />
-          {id > 1 && (
-            <div className="tooltip" data-tip="delete">
-              <button className="mr-2" onClick={removeGroup}>
-                <XCircleIcon height="36" className="text-red-500" />
-              </button>
-            </div>
-          )}
-        </div>
+        <input
+          id={`chargingPowerGroups.${id}.power`}
+          type="number"
+          {...register(`chargingPowerGroups.${id}.power`, {
+            valueAsNumber: true
+          })}
+          className="input-field w-25 text-center"
+        />
       </div>
+
+      <div className="flex items-center">
+        <XMarkIcon className="mx-2 text-gray-400" height="24" />
+      </div>
+
+      <div className="flex flex-col">
+        <label
+          htmlFor={`chargingPowerGroups.${id}.count`}
+          className="label-text"
+        >
+          Count
+        </label>
+        <input
+          id={`chargingPowerGroups.${id}.count`}
+          type="number"
+          {...register(`chargingPowerGroups.${id}.count`, {
+            valueAsNumber: true
+          })}
+          className="input-field w-25 text-center"
+        />
+      </div>
+
+      {id > 1 && (
+        <button
+          onClick={removeGroup}
+          className="group ml-2 cursor-pointer rounded p-1 transition hover:bg-red-500 hover:text-white"
+          aria-label="Delete power group"
+        >
+          <TrashIcon
+            height="24"
+            className="text-red-500 transition group-hover:text-white"
+          />
+        </button>
+      )}
     </div>
   );
 };
-
-export default PowerGroupItem;
