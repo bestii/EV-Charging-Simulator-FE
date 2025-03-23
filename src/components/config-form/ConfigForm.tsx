@@ -60,7 +60,7 @@ const ConfigForm = ({ onSimulate }: ConfigFormProps) => {
               max="200"
               step="1"
               {...register('arrivalMultiplier', { valueAsNumber: true })}
-              className="w-full cursor-pointer"
+              className="w-full cursor-pointer focus-visible:shadow-[0_0_8px_theme('colors.blue.700')] focus-visible:ring-0 focus-visible:outline-none"
             />
             <ErrorMsg name="arrivalMultiplier" />
           </div>
