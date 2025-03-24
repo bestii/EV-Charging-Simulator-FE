@@ -1,4 +1,10 @@
-import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
+import {
+  Legend,
+  RadialBar,
+  RadialBarChart,
+  ResponsiveContainer,
+  Tooltip
+} from 'recharts';
 import { SimulationData } from '../../../../types';
 
 type ChargingEventsChartProps = {
@@ -12,29 +18,30 @@ export const ChargingEventsChart = ({
 
   const eventData = Object.entries(chargingEventsFrequency).map(
     ([key, value], index) => ({
-      name: key,
+      name: key.charAt(0).toUpperCase() + key.slice(1),
       value,
-      color: COLORS[index]
+      fill: COLORS[index % COLORS.length]
     })
   );
 
   return (
     <ResponsiveContainer width="100%" height={300}>
-      <PieChart>
-        <Pie
-          data={eventData}
+      <RadialBarChart
+        innerRadius="20%"
+        outerRadius="90%"
+        data={eventData}
+        startAngle={90}
+        endAngle={-270}
+      >
+        <RadialBar
+          label={{ position: 'insideStart', fill: '#fff' }}
+          background
           dataKey="value"
-          nameKey="name"
-          cx="50%"
-          cy="50%"
-          outerRadius={100}
-        >
-          {eventData.map((entry) => (
-            <Cell key={`cell-${entry.name}`} fill={entry.color} />
-          ))}
-        </Pie>
+          data={eventData}
+        />
         <Tooltip />
-      </PieChart>
+        <Legend />
+      </RadialBarChart>
     </ResponsiveContainer>
   );
 };
