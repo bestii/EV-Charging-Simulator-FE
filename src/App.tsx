@@ -22,7 +22,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <main className="main container mx-auto p-4">
+      <main className="main container mx-auto mb-4 p-4">
         <div className="my-6 text-center">
           <h1 className="my-6 text-5xl tracking-tighter">
             Plan Your EV Charging Setup Smartly
