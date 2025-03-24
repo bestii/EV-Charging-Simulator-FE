@@ -4,8 +4,7 @@ import { ConfigValues, SimulationData } from '../types';
 export const getSimulationData = async (
   requestParams: ConfigValues
 ): Promise<SimulationData> => {
-  console.log(requestParams);
-
+  console.table(requestParams);
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(simulationData);

@@ -18,9 +18,9 @@ export const SimuationPlots = ({ data }: SimuationPlotsProps) => {
   } = data;
   return (
     <div className="grid grid-cols-1 gap-6 p-6 md:grid-cols-1">
+      <TotalEnergyCharged total={totalEnergyCharged.total} />
       <ChargingValuesChart chargePointData={chargePointData} />
       <ExemplaryDayChart exemplaryDayData={exemplaryDayData} />
-      <TotalEnergyCharged total={totalEnergyCharged.total} />
       <ChargingEventsChart chargingEventsFrequency={chargingEventsFrequency} />
       <AggregatedDataChart aggregatedChartData={aggregatedChartData} />
     </div>

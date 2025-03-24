@@ -10,7 +10,6 @@ const App = () => {
   const handleSimulation = async (data: ConfigValues) => {
     mutate(data, {
       onSuccess: (simulatedData) => {
-        console.log(simulatedData);
         setSimulations(simulatedData);
       }
     });
@@ -34,7 +33,11 @@ const App = () => {
           </p>
         </div>
         <div className="grid auto-rows-auto grid-cols-1 items-start gap-4 md:grid-cols-12">
-          <ConfigForm onSimulate={handleSimulation} onReset={handleReset} />
+          <ConfigForm
+            onSimulate={handleSimulation}
+            onReset={handleReset}
+            isSimulationLoading={isPending}
+          />
           <SimulationDashboard
             simulation={simulations}
             isSimulationLoading={isPending}
