@@ -8,7 +8,7 @@ import { ErrorMsg } from '../error-msg/ErrorMsg';
 import { PowerGroupList } from './power-groups/PowerGroupList';
 
 const defaultValues: ConfigValues = {
-  chargePoints: 1,
+  chargePoints: 20,
   arrivalMultiplier: 100,
   carConsumption: 18,
   isPowerDifferent: false,
@@ -31,7 +31,7 @@ const ConfigForm = ({ onSimulate, onReset }: ConfigFormProps) => {
     mode: 'onChange'
   });
 
-  const { register, handleSubmit, watch, setValue, reset } = methods;
+  const { register, handleSubmit, watch, setValue, reset, trigger } = methods;
 
   const chargePoints = watch('chargePoints');
   const isPowerDifferent = watch('isPowerDifferent');
@@ -40,7 +40,10 @@ const ConfigForm = ({ onSimulate, onReset }: ConfigFormProps) => {
     if (chargePoints <= 2) {
       setValue('isPowerDifferent', false);
     }
-  }, [chargePoints, setValue]);
+    if (chargePoints) {
+      trigger('chargingPowerGroups');
+    }
+  }, [chargePoints, setValue, trigger]);
 
   const onSubmit = (data: ConfigValues) => {
     onSimulate(data);
