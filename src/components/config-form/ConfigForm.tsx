@@ -37,12 +37,11 @@ const ConfigForm = ({
   });
 
   const { register, handleSubmit, watch, setValue, reset, trigger } = methods;
-
   const chargePoints = watch('chargePoints');
   const isPowerDifferent = watch('isPowerDifferent');
 
   useEffect(() => {
-    if (chargePoints <= 2) {
+    if (chargePoints < 2) {
       setValue('isPowerDifferent', false);
     }
     if (chargePoints) {
