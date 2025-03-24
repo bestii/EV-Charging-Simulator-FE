@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <footer className="container mx-auto text-sm font-semibold">
-      <div className="flex flex-col items-center gap-2 border-t border-gray-950/5 px-4 py-6 sm:flex-row sm:justify-between">
+      <div className="flex flex-col items-center gap-2 border-t border-black/10 px-4 py-6 sm:flex-row sm:justify-between">
         <span className="text-center">
           © {new Date().getFullYear()} EV Charging Simulator.
         </span>
