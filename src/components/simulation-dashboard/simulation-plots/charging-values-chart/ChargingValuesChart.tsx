@@ -17,11 +17,11 @@ export const ChargingValuesChart = ({
 }: ChargingValuesChartProps) => {
   return (
     <ResponsiveContainer width="100%" height={300}>
-      <BarChart data={chargePointData}>
+      <BarChart data={chargePointData} margin={{ bottom: 30 }}>
         <XAxis
           dataKey="chargePoint"
           label={{
-            value: 'Charge Point',
+            value: 'Charge Points',
             position: 'insideBottom',
             offset: -5
           }}

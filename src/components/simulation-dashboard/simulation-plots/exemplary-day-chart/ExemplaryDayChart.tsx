@@ -23,7 +23,8 @@ export const ExemplaryDayChart = ({
           label={{
             value: 'Power Demand (kW)',
             angle: -90,
-            position: 'insideLeft'
+            position: 'insideLeft',
+            dy: 10
           }}
         />
         <Tooltip />

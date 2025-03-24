@@ -1,4 +1,5 @@
 export const simulationData = {
+  totalEnergyCharged: { total: 3000 },
   chargePointData: [
     { chargePoint: 1, power: 5 },
     { chargePoint: 2, power: 8 },
@@ -13,7 +14,7 @@ export const simulationData = {
     { hour: '18:00', powerDemand: 30 },
     { hour: '23:00', powerDemand: 5 }
   ],
-  totalEnergyCharged: { total: 3000 }, // kWh over a given period
+
   chargingEventsFrequency: {
     year: 12000,
     month: 1000,
