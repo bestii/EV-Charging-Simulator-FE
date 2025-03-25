@@ -25,23 +25,27 @@ export const ChargingEventsChart = ({
   );
 
   return (
-    <ResponsiveContainer width="100%" height={300}>
-      <RadialBarChart
-        innerRadius="20%"
-        outerRadius="90%"
-        data={eventData}
-        startAngle={90}
-        endAngle={-270}
-      >
-        <RadialBar
-          label={{ position: 'insideStart', fill: '#fff' }}
-          background
-          dataKey="value"
+    <div className="border-1 border-black/10 p-4">
+      <h3 className="text-md text-center font-bold text-gray-500">
+        Charging Events Frequency per Year/Month/Week/Day
+      </h3>
+      <ResponsiveContainer width="100%" height={300}>
+        <RadialBarChart
+          innerRadius="20%"
+          outerRadius="90%"
           data={eventData}
-        />
-        <Tooltip />
-        <Legend />
-      </RadialBarChart>
-    </ResponsiveContainer>
+          startAngle={90}
+          endAngle={-270}
+        >
+          <RadialBar
+            label={{ position: 'insideStart', fill: '#000' }}
+            background
+            dataKey="value"
+          />
+          <Tooltip />
+          <Legend />
+        </RadialBarChart>
+      </ResponsiveContainer>
+    </div>
   );
 };

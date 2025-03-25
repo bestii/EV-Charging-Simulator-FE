@@ -34,7 +34,7 @@ export const ChargingValuesChart = ({
           <Bar dataKey="power" fill="#8884d8" />
         </BarChart>
       </ResponsiveContainer>
-      <h3 className="text-center text-lg font-bold">
+      <h3 className="text-md text-center font-bold text-gray-500">
         Charging Values per Charge Point
       </h3>
     </div>

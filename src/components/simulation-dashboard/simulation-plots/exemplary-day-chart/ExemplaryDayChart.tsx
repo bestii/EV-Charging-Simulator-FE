@@ -37,7 +37,9 @@ export const ExemplaryDayChart = ({
           />
         </LineChart>
       </ResponsiveContainer>
-      <h3 className="text-center text-lg font-bold">Power Demand (kW)</h3>
+      <h3 className="text-md text-center font-bold text-gray-500">
+        Power Demand (kW)
+      </h3>
     </div>
   );
 };
