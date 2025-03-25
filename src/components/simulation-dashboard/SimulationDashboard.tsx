@@ -12,10 +12,11 @@ const SimulationDashboard = ({
   isSimulationLoading,
   simulation
 }: SimulationDashboardProps) => {
+  const simulationNotExecuted = !simulation && !isSimulationLoading;
   return (
     <Card additionalClass="lg:col-span-8 md:col-span-7 h-full">
       {isSimulationLoading && <Loader />}
-      {!simulation && !isSimulationLoading && (
+      {simulationNotExecuted && (
         <div className="flex h-full items-center justify-center">
           <span>
             Run the simulation with your configuration to generate results.

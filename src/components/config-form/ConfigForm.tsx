@@ -56,7 +56,7 @@ const ConfigForm = ({
   return (
     <Card additionalClass="lg:col-span-4 md:col-span-5">
       <FormProvider {...methods}>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-1">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
             <label htmlFor="arrivalMultiplier" className="label-text">
               Arrival Multiplier: <span>{watch('arrivalMultiplier')}%</span>
@@ -68,7 +68,7 @@ const ConfigForm = ({
               max="200"
               step="1"
               {...register('arrivalMultiplier', { valueAsNumber: true })}
-              className="w-full cursor-pointer focus-visible:shadow-[0_0_8px_theme('colors.blue.700')] focus-visible:ring-0 focus-visible:outline-none"
+              className="w-full cursor-pointer focus-visible:ring-2 focus-visible:outline-none"
             />
             <ErrorMsg name="arrivalMultiplier" />
           </div>
@@ -115,7 +115,7 @@ const ConfigForm = ({
               disabled={chargePoints < 2}
             />
           </div>
-          {!isPowerDifferent && (
+          {!isPowerDifferent ? (
             <div>
               <label htmlFor="defaultPower" className="label-text">
                 Default Power (kW)
@@ -128,8 +128,9 @@ const ConfigForm = ({
               />
               <ErrorMsg name="defaultPower" />
             </div>
+          ) : (
+            <PowerGroupList />
           )}
-          {isPowerDifferent && <PowerGroupList />}
           <div className="mt-4 flex justify-between">
             <button
               type="button"
@@ -151,7 +152,7 @@ const ConfigForm = ({
                 <>
                   <svg
                     aria-hidden="true"
-                    className="mr-2 inline h-4 w-4 animate-spin text-gray-200 dark:text-gray-600"
+                    className="mr-2 inline h-4 w-4 animate-spin text-gray-200"
                     viewBox="0 0 100 101"
                     fill="white"
                     xmlns="http://www.w3.org/2000/svg"
