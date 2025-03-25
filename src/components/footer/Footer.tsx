@@ -6,7 +6,9 @@ const Footer = () => {
           © {new Date().getFullYear()} EV Charging Simulator.
         </span>
         <span className="text-center">
-          <span className="me-1 text-gray-500">Created / Code / Design by</span>
+          <span className="me-1 text-gray-500">
+            Created / Coded / Designed by
+          </span>
           <a
             href="https://github.com/bestii"
             className="underline"
