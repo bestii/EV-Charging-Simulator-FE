@@ -49,4 +49,4 @@ Here are some example images of the EV Charging Simulator:
 
 ### Mobile View
 
-![Mobile](https://raw.githubusercontent.com/bestii/EV-Charging-Simulator-FE/refs/heads/main/public/Mobile.png)
+![Mobile](https://raw.githubusercontent.com/bestii/EV-Charging-Simulator-FE/refs/heads/main/public/mobile_image.png)
