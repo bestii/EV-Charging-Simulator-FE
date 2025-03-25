@@ -1,54 +1,52 @@
-# React + TypeScript + Vite
+# EV Charging Simulator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application that allows you to define charging station configurations and visualize simulation results, including charging values, energy consumption, and charging events over different time periods.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Before getting started, make sure you have the following installed:
 
-## Expanding the ESLint configuration
+- [Node.js](https://nodejs.org/)
+- [pnpm](https://pnpm.io/) (or an alternative package manager like npm or yarn)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Getting Started
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### 1. Clone the Repository
+
+Clone the repository to your local machine:
+
+```bash
+git clone https://github.com/bestii/EV-Charging-Simulator-FE.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install Dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Navigate to the project directory and install the dependencies:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+pnpm install
 ```
+
+### 3. Run the Development Server
+
+Once the dependencies are installed, start the development server:
+
+```bash
+pnpm start
+```
+
+This will launch the app at <http://localhost:3000>.
+
+The deployed version of the application is available at <https://ev-charging-simulator.bestinjohn.com/>.
+
+## Screenshots
+
+Here are some example images of the EV Charging Simulator:
+
+### Desktop View
+
+![Desktop](https://raw.githubusercontent.com/bestii/EV-Charging-Simulator-FE/refs/heads/main/public/Desktop.png)
+
+### Mobile View
+
+![Mobile](https://raw.githubusercontent.com/bestii/EV-Charging-Simulator-FE/refs/heads/main/public/Mobile.png)
